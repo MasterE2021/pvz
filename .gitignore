@@ -1,5 +1,8 @@
 target/
 
+system/
+logs/
+
 ### IntelliJ IDEA ###
 .idea/
 
