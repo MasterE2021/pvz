@@ -32,12 +32,13 @@ public class GameStarter extends GameApplication {
             @Override
             protected void onAction() {
                 super.onAction();
+                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
+                entitiesByType.get(0).getComponent(MoveComponent.class).up();
             }
 
             @Override
             protected void onActionBegin() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).up();
+
             }
 
             @Override
@@ -51,13 +52,12 @@ public class GameStarter extends GameApplication {
             @Override
             protected void onAction() {
                 super.onAction();
+                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
+                entitiesByType.get(0).getComponent(MoveComponent.class).down();
             }
 
             @Override
             protected void onActionBegin() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).down();
-
             }
 
             @Override
@@ -71,13 +71,12 @@ public class GameStarter extends GameApplication {
             @Override
             protected void onAction() {
                 super.onAction();
+                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
+                entitiesByType.get(0).getComponent(MoveComponent.class).left();
             }
 
             @Override
             protected void onActionBegin() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).left();
-
             }
 
             @Override
@@ -92,13 +91,12 @@ public class GameStarter extends GameApplication {
             @Override
             protected void onAction() {
                 super.onAction();
+                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
+                entitiesByType.get(0).getComponent(MoveComponent.class).right();
             }
 
             @Override
             protected void onActionBegin() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).right();
-
             }
 
             @Override
