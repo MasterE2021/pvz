@@ -5,6 +5,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.mastere.component.MoveComponent;
 import com.mastere.enums.GameEntity;
+import com.mastere.enums.PlayerDire;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.List;
  */
 public class PlayerAction extends UserAction {
 
-    public PlayerAction(String dir) {
-        super(dir);
+    public PlayerAction(PlayerDire dir) {
+        super(dir.getName());
     }
 
     @Override
