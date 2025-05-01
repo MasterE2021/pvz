@@ -2,6 +2,7 @@ package com.mastere.factory;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.mastere.component.MoveComponent;
 import com.mastere.enums.GameEntity;
 
 
@@ -18,7 +19,9 @@ public class GameEntityFactory {
         }
 
         if (GameEntity.plant == type) {
-            return FXGL.entityBuilder().view("shooterOfPea_04.png").build();
+            Entity entity = FXGL.entityBuilder().view("shooterOfPea_04.png").with(new MoveComponent()).build();
+            entity.setType(GameEntity.plant);
+            return entity;
         }
         return null;
     }
