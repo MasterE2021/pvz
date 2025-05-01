@@ -4,14 +4,11 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.input.UserAction;
-import com.mastere.component.MoveComponent;
+import com.mastere.action.PlayerAction;
 import com.mastere.enums.GameEntity;
 import com.mastere.factory.GameEntityFactory;
 import javafx.scene.input.KeyCode;
 
-import java.util.List;
 
 /**
  * @author 0pascal
@@ -28,83 +25,10 @@ public class GameStarter extends GameApplication {
     protected void initGame() {
         FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.plant));
 
-        FXGL.getInput().addAction(new UserAction("up") {
-            @Override
-            protected void onAction() {
-                super.onAction();
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).up();
-            }
-
-            @Override
-            protected void onActionBegin() {
-
-            }
-
-            @Override
-            protected void onActionEnd() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).stop();
-            }
-        }, KeyCode.W);
-
-        FXGL.getInput().addAction(new UserAction("down") {
-            @Override
-            protected void onAction() {
-                super.onAction();
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).down();
-            }
-
-            @Override
-            protected void onActionBegin() {
-            }
-
-            @Override
-            protected void onActionEnd() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).stop();
-            }
-        }, KeyCode.S);
-
-        FXGL.getInput().addAction(new UserAction("left") {
-            @Override
-            protected void onAction() {
-                super.onAction();
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).left();
-            }
-
-            @Override
-            protected void onActionBegin() {
-            }
-
-            @Override
-            protected void onActionEnd() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).stop();
-            }
-        }, KeyCode.A);
-
-
-        FXGL.getInput().addAction(new UserAction("right") {
-            @Override
-            protected void onAction() {
-                super.onAction();
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).right();
-            }
-
-            @Override
-            protected void onActionBegin() {
-            }
-
-            @Override
-            protected void onActionEnd() {
-                List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-                entitiesByType.get(0).getComponent(MoveComponent.class).stop();
-            }
-        }, KeyCode.D);
+        FXGL.getInput().addAction(new PlayerAction("up"), KeyCode.W);
+        FXGL.getInput().addAction(new PlayerAction("down"), KeyCode.S);
+        FXGL.getInput().addAction(new PlayerAction("left"), KeyCode.A);
+        FXGL.getInput().addAction(new PlayerAction("right"), KeyCode.D);
     }
 
     @Override
