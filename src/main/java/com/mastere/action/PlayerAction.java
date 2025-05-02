@@ -25,17 +25,20 @@ public class PlayerAction extends UserAction {
     protected void onAction() {
         super.onAction();
         List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
-        if ("up".equals(super.getName())) {
-            entitiesByType.get(0).getComponent(MoveComponent.class).up();
+        String name = super.getName();
+        MoveComponent component = entitiesByType.get(0).getComponent(MoveComponent.class);
+
+        if ("up".equals(name)) {
+            component.up();
         }
-        if ("down".equals(super.getName())) {
-            entitiesByType.get(0).getComponent(MoveComponent.class).down();
+        if ("down".equals(name)) {
+            component.down();
         }
-        if ("left".equals(super.getName())) {
-            entitiesByType.get(0).getComponent(MoveComponent.class).left();
+        if ("left".equals(name)) {
+            component.left();
         }
-        if ("right".equals(super.getName())) {
-            entitiesByType.get(0).getComponent(MoveComponent.class).right();
+        if ("right".equals(name)) {
+            component.right();
         }
     }
 
