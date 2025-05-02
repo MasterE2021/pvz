@@ -18,9 +18,9 @@ public class GameEntityFactory {
             return null;
         }
 
-        if (GameEntity.plant == type) {
+        if (GameEntity.PLANT == type) {
             Entity entity = FXGL.entityBuilder().view("shooterOfPea_04.png").with(new MoveComponent()).build();
-            entity.setType(GameEntity.plant);
+            entity.setType(GameEntity.PLANT);
             return entity;
         }
         return null;

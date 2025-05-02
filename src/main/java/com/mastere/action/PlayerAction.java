@@ -6,7 +6,6 @@ import com.almasb.fxgl.input.UserAction;
 import com.mastere.component.MoveComponent;
 import com.mastere.enums.GameEntity;
 import com.mastere.enums.PlayerDire;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class PlayerAction extends UserAction {
     @Override
     protected void onAction() {
         super.onAction();
-        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
+        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.PLANT);
         String name = super.getName();
         MoveComponent component = entitiesByType.get(0).getComponent(MoveComponent.class);
 
@@ -49,7 +48,7 @@ public class PlayerAction extends UserAction {
 
     @Override
     protected void onActionEnd() {
-        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
+        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.PLANT);
         entitiesByType.get(0).getComponent(MoveComponent.class).stop();
     }
 }

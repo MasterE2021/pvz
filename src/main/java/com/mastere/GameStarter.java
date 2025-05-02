@@ -24,7 +24,7 @@ public class GameStarter extends GameApplication {
 
     @Override
     protected void initGame() {
-        FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.plant));
+        FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.PLANT));
 
         FXGL.getInput().addAction(new PlayerAction(PlayerDire.UP), KeyCode.W);
         FXGL.getInput().addAction(new PlayerAction(PlayerDire.DOWN), KeyCode.S);
