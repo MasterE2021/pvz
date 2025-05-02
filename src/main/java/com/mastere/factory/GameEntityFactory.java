@@ -23,6 +23,13 @@ public class GameEntityFactory {
             entity.setType(GameEntity.PLANT);
             return entity;
         }
+
+        if (GameEntity.ZOMBIE == type) {
+            Entity entity = FXGL.entityBuilder().view("zombie_01.gif").with(new MoveComponent()).build();
+            entity.setType(GameEntity.ZOMBIE);
+            return entity;
+        }
+
         return null;
     }
 }

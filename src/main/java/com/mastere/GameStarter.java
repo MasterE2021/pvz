@@ -30,6 +30,9 @@ public class GameStarter extends GameApplication {
         FXGL.getInput().addAction(new PlayerAction(PlayerDire.DOWN), KeyCode.S);
         FXGL.getInput().addAction(new PlayerAction(PlayerDire.LEFT), KeyCode.A);
         FXGL.getInput().addAction(new PlayerAction(PlayerDire.RIGHT), KeyCode.D);
+
+
+        FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.ZOMBIE));
     }
 
     @Override
