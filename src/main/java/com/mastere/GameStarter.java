@@ -4,9 +4,10 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.mastere.action.PlayerAction;
-import com.mastere.enums.GameEntity;
 import com.mastere.factory.GameEntityFactory;
 import javafx.scene.input.KeyCode;
+
+import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 
 /**
@@ -24,8 +25,8 @@ public class GameStarter extends GameApplication {
     protected void initGame() {
         FXGL.getGameWorld().addEntityFactory(new GameEntityFactory());
 
-        FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.PLANT));
-        FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.ZOMBIE));
+        FXGL.getGameWorld().addEntity(spawn("plant", 300, 300));
+        FXGL.getGameWorld().addEntity(spawn("zombie", 500, 300));
     }
 
     @Override

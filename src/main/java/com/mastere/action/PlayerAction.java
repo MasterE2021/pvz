@@ -3,7 +3,7 @@ package com.mastere.action;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
-import com.mastere.component.MoveComponent;
+import com.mastere.component.PlayerComponent;
 import com.mastere.enums.GameEntity;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class PlayerAction extends UserAction {
         List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.PLANT);
         String name = super.getName();
         Entity entity = entitiesByType.get(0);
-        MoveComponent component = entity.getComponent(MoveComponent.class);
+        PlayerComponent component = entity.getComponent(PlayerComponent.class);
 
         // 添加一个标志位来判断是否已经是镜像状态
         boolean isMirrored = entity.getScaleX() < 0;
@@ -52,16 +52,5 @@ public class PlayerAction extends UserAction {
         if ("shoot".equals(name)) {
             component.shoot();
         }
-    }
-
-    @Override
-    protected void onActionBegin() {
-
-    }
-
-    @Override
-    protected void onActionEnd() {
-        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.PLANT);
-        entitiesByType.get(0).getComponent(MoveComponent.class).stop();
     }
 }
