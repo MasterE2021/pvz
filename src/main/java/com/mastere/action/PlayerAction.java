@@ -5,7 +5,6 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.mastere.component.MoveComponent;
 import com.mastere.enums.GameEntity;
-import com.mastere.enums.PlayerDire;
 
 import java.util.List;
 
@@ -16,8 +15,8 @@ import java.util.List;
  */
 public class PlayerAction extends UserAction {
 
-    public PlayerAction(PlayerDire dir) {
-        super(dir.getName());
+    public PlayerAction(String actionStr) {
+        super(actionStr);
     }
 
     @Override
@@ -48,6 +47,10 @@ public class PlayerAction extends UserAction {
                 entity.setScaleX(-entity.getScaleX());
             }
             component.right();
+        }
+
+        if ("shoot".equals(name)) {
+            component.shoot();
         }
     }
 

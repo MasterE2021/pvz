@@ -1,7 +1,11 @@
 package com.mastere.factory;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.EntityFactory;
+import com.almasb.fxgl.entity.SpawnData;
+import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.mastere.component.MoveComponent;
 import com.mastere.enums.GameEntity;
@@ -13,7 +17,7 @@ import javafx.geometry.Point2D;
  * @description
  * @date 2025-05-01 16:24
  */
-public class GameEntityFactory {
+public class GameEntityFactory implements EntityFactory {
 
     public static Entity createEntity(GameEntity type) {
         if (type == null) {
@@ -34,5 +38,11 @@ public class GameEntityFactory {
         }
 
         return null;
+    }
+
+
+    @Spawns("bullet")
+    public Entity newBullet(SpawnData data) {
+        return FXGL.entityBuilder(data).type(GameEntity.PEA).viewWithBBox("pea_01.png").with(new ProjectileComponent(data.get("direction"), 420)).build();
     }
 }

@@ -5,7 +5,6 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.mastere.action.PlayerAction;
 import com.mastere.enums.GameEntity;
-import com.mastere.enums.PlayerDire;
 import com.mastere.factory.GameEntityFactory;
 import javafx.scene.input.KeyCode;
 
@@ -23,16 +22,19 @@ public class GameStarter extends GameApplication {
 
     @Override
     protected void initGame() {
+        FXGL.getGameWorld().addEntityFactory(new GameEntityFactory());
+
         FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.PLANT));
         FXGL.getGameWorld().addEntity(GameEntityFactory.createEntity(GameEntity.ZOMBIE));
     }
 
     @Override
     protected void initInput() {
-        FXGL.getInput().addAction(new PlayerAction(PlayerDire.UP), KeyCode.W);
-        FXGL.getInput().addAction(new PlayerAction(PlayerDire.DOWN), KeyCode.S);
-        FXGL.getInput().addAction(new PlayerAction(PlayerDire.LEFT), KeyCode.A);
-        FXGL.getInput().addAction(new PlayerAction(PlayerDire.RIGHT), KeyCode.D);
+        FXGL.getInput().addAction(new PlayerAction("up"), KeyCode.W);
+        FXGL.getInput().addAction(new PlayerAction("down"), KeyCode.S);
+        FXGL.getInput().addAction(new PlayerAction("left"), KeyCode.A);
+        FXGL.getInput().addAction(new PlayerAction("right"), KeyCode.D);
+        FXGL.getInput().addAction(new PlayerAction("shoot"), KeyCode.SPACE);
     }
 
     @Override

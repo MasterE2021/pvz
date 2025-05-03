@@ -1,7 +1,14 @@
 package com.mastere.component;
 
 import com.almasb.fxgl.core.math.Vec2;
+import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.time.LocalTimer;
+import com.mastere.enums.Dir;
+import javafx.util.Duration;
+
+import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 /**
  * @author 0pascal
@@ -15,6 +22,10 @@ public class MoveComponent extends Component {
 
     // 纵向变化
     private int deltaY = 0;
+
+    private final LocalTimer shootTimer = FXGL.newLocalTimer();
+
+    private final Dir moveDir = Dir.RIGHT;
 
     @Override
     public void onUpdate(double tpf) {
@@ -52,4 +63,13 @@ public class MoveComponent extends Component {
         deltaY = 0;
     }
 
+    public void shoot() {
+        if (!shootTimer.elapsed(Duration.seconds(0.3))) {
+            return;
+        }
+        spawn("bullet", new SpawnData(getEntity().getCenter().add(-4, -4.5))
+                .put("direction", moveDir.getVector())
+                .put("owner", entity));
+        shootTimer.capture();
+    }
 }
