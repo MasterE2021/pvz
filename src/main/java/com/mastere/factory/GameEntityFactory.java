@@ -43,6 +43,10 @@ public class GameEntityFactory implements EntityFactory {
 
     @Spawns("bullet")
     public Entity newBullet(SpawnData data) {
-        return FXGL.entityBuilder(data).type(GameEntity.PEA).viewWithBBox("pea_01.png").with(new ProjectileComponent(data.get("direction"), 420)).build();
+        return FXGL.entityBuilder(data)
+                .type(GameEntity.PEA)
+                .viewWithBBox("pea_01.png")
+                .with(new ProjectileComponent(data.get("direction"), 420))
+                .build();
     }
 }

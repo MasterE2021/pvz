@@ -64,10 +64,10 @@ public class MoveComponent extends Component {
     }
 
     public void shoot() {
-        if (!shootTimer.elapsed(Duration.seconds(0.3))) {
+        if (!shootTimer.elapsed(Duration.seconds(0.5))) {
             return;
         }
-        spawn("bullet", new SpawnData(getEntity().getCenter().add(-4, -4.5))
+        spawn("bullet", new SpawnData(getEntity().getCenter().add(-11, -30))
                 .put("direction", moveDir.getVector())
                 .put("owner", entity));
         shootTimer.capture();
