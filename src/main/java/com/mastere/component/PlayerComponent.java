@@ -27,7 +27,7 @@ public class PlayerComponent extends Component {
 
     private final LocalTimer shootTimer = FXGL.newLocalTimer();
 
-    private Dir moveDir;
+    private Dir moveDir = Dir.RIGHT;
 
     @Override
     public void onUpdate(double tpf) {
