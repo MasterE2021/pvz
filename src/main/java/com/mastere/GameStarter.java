@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.mastere.action.PlayerAction;
+import com.mastere.collision.Pea2Zombie;
 import com.mastere.factory.GameEntityFactory;
 import javafx.scene.input.KeyCode;
 
@@ -45,5 +46,13 @@ public class GameStarter extends GameApplication {
         settings.setTitle("植物大战僵尸");
         settings.setAppIcon("logo.png");
         settings.setVersion("0.1");
+    }
+
+    /**
+     * 初始化物理事件
+     */
+    @Override
+    protected void initPhysics() {
+        FXGL.getPhysicsWorld().addCollisionHandler(new Pea2Zombie());
     }
 }
