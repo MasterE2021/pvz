@@ -6,7 +6,7 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.time.LocalTimer;
 import com.mastere.enums.Dir;
-import com.mastere.enums.GameEntity;
+import com.mastere.factory.GameEntityFactory;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
@@ -62,7 +62,7 @@ public class PlayerComponent extends Component {
         Point2D shootLine = getEntity().getCenter().add(0, -30);
         Point2D point2D = shootLine.add(vector.getX() > 0 ? -11 : -49, 0);
         SpawnData spawnData = new SpawnData(point2D).put("direction", vector).put("owner", entity);
-        spawn(GameEntity.pea.name(), spawnData);
+        spawn(GameEntityFactory.GameEntity.pea.name(), spawnData);
         shootTimer.capture();
     }
 

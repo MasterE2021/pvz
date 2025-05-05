@@ -8,7 +8,6 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.mastere.component.PlayerComponent;
-import com.mastere.enums.GameEntity;
 import javafx.geometry.Point2D;
 
 
@@ -19,10 +18,14 @@ import javafx.geometry.Point2D;
  */
 public class GameEntityFactory implements EntityFactory {
 
+    public enum GameEntity {
+        plant, zombie, pea
+    }
+
     @Spawns("plant")
     public Entity plant(SpawnData data) {
         return FXGL.entityBuilder(data)
-                   .type(GameEntity.plant)
+                   .type(GameEntityFactory.GameEntity.plant)
                    .bbox(BoundingShape.box(71, 71))
                    .view("shooterOfPea_04.png")
                    .with(new PlayerComponent())
@@ -32,13 +35,13 @@ public class GameEntityFactory implements EntityFactory {
 
     @Spawns("zombie")
     public Entity zombie(SpawnData data) {
-        return FXGL.entityBuilder(data).type(GameEntity.zombie).view("zombie_01.gif").build();
+        return FXGL.entityBuilder(data).type(GameEntityFactory.GameEntity.zombie).view("zombie_01.gif").build();
     }
 
     @Spawns("pea")
     public Entity pea(SpawnData data) {
         return FXGL.entityBuilder(data)
-                   .type(GameEntity.pea)
+                   .type(GameEntityFactory.GameEntity.pea)
                    .viewWithBBox("pea_01.png")
                    .with(new ProjectileComponent(data.get("direction"), 420))
                    .build();
