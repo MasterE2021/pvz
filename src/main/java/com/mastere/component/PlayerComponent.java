@@ -18,10 +18,7 @@ import static com.almasb.fxgl.dsl.FXGL.spawn;
  * @date 2025-05-01 16:38
  */
 public class PlayerComponent extends Component {
-    private final static int PLAYER_SPEED = 100;
-
-
-    private double speed = 0;
+    private final static int PLAYER_SPEED = 10;
 
     private final Vec2 velocity = new Vec2();
 
@@ -31,7 +28,6 @@ public class PlayerComponent extends Component {
 
     @Override
     public void onUpdate(double tpf) {
-        speed = tpf * PLAYER_SPEED;
     }
 
     public void up() {
@@ -71,10 +67,7 @@ public class PlayerComponent extends Component {
             return;
         }
         Point2D vector = moveDir.getVector();
-        float xSpeed = (float) (vector.getX() * speed);
-        float ySpeed = (float) (vector.getY() * speed);
-        velocity.set(xSpeed, ySpeed);
-        velocity.normalizeLocal();
+        velocity.set((float) (vector.getX() * PLAYER_SPEED), (float) (vector.getY() * PLAYER_SPEED));
         entity.translate(velocity.x, velocity.y);
     }
 }
