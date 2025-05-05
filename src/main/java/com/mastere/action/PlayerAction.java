@@ -23,7 +23,7 @@ public class PlayerAction extends UserAction {
     @Override
     protected void onAction() {
         super.onAction();
-        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.PLANT);
+        List<Entity> entitiesByType = FXGL.getGameWorld().getEntitiesByType(GameEntity.plant);
         String name = super.getName();
         Entity entity = entitiesByType.get(0);
         PlayerComponent component = entity.getComponent(PlayerComponent.class);
@@ -31,26 +31,25 @@ public class PlayerAction extends UserAction {
         // 添加一个标志位来判断是否已经是镜像状态
         boolean isMirrored = entity.getScaleX() < 0;
 
-        if ("up".equals(name)) {
+        if (Action.up.name().equals(name)) {
             component.up();
         }
-        if ("down".equals(name)) {
+        if (Action.down.name().equals(name)) {
             component.down();
         }
-        if ("left".equals(name)) {
+        if (Action.left.name().equals(name)) {
             if (!isMirrored) {
                 entity.setScaleX(-entity.getScaleX());
             }
             component.left();
         }
-        if ("right".equals(name)) {
+        if (Action.right.name().equals(name)) {
             if (isMirrored) {
                 entity.setScaleX(-entity.getScaleX());
             }
             component.right();
         }
-
-        if ("shoot".equals(name)) {
+        if (Action.shoot.name().equals(name)) {
             component.shoot();
         }
     }

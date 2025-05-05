@@ -6,5 +6,5 @@ package com.mastere.enums;
  * @date 2025-05-01 16:21
  */
 public enum GameEntity {
-    PLANT, ZOMBIE, PEA
+    plant, zombie, pea
 }

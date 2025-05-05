@@ -6,6 +6,7 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.time.LocalTimer;
 import com.mastere.enums.Dir;
+import com.mastere.enums.GameEntity;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
@@ -19,7 +20,6 @@ import static com.almasb.fxgl.dsl.FXGL.spawn;
 public class PlayerComponent extends Component {
     private final static int PLAYER_SPEED = 100;
 
-    private boolean movedThisFrame = false;
 
     private double speed = 0;
 
@@ -32,42 +32,24 @@ public class PlayerComponent extends Component {
     @Override
     public void onUpdate(double tpf) {
         speed = tpf * PLAYER_SPEED;
-        movedThisFrame = false;
     }
 
-
     public void up() {
-        if (movedThisFrame) {
-            return;
-        }
-        movedThisFrame = true;
         moveDir = Dir.UP;
         move();
     }
 
     public void left() {
-        if (movedThisFrame) {
-            return;
-        }
-        movedThisFrame = true;
         moveDir = Dir.LEFT;
         move();
     }
 
     public void right() {
-        if (movedThisFrame) {
-            return;
-        }
-        movedThisFrame = true;
         moveDir = Dir.RIGHT;
         move();
     }
 
     public void down() {
-        if (movedThisFrame) {
-            return;
-        }
-        movedThisFrame = true;
         moveDir = Dir.DOWN;
         move();
     }
@@ -80,7 +62,7 @@ public class PlayerComponent extends Component {
         Point2D shootLine = getEntity().getCenter().add(0, -30);
         Point2D point2D = shootLine.add(vector.getX() > 0 ? -11 : -49, 0);
         SpawnData spawnData = new SpawnData(point2D).put("direction", vector).put("owner", entity);
-        spawn("bullet", spawnData);
+        spawn(GameEntity.pea.name(), spawnData);
         shootTimer.capture();
     }
 

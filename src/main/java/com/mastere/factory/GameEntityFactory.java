@@ -22,7 +22,7 @@ public class GameEntityFactory implements EntityFactory {
     @Spawns("plant")
     public Entity plant(SpawnData data) {
         return FXGL.entityBuilder(data)
-                   .type(GameEntity.PLANT)
+                   .type(GameEntity.plant)
                    .bbox(BoundingShape.box(71, 71))
                    .view("shooterOfPea_04.png")
                    .with(new PlayerComponent())
@@ -32,13 +32,13 @@ public class GameEntityFactory implements EntityFactory {
 
     @Spawns("zombie")
     public Entity zombie(SpawnData data) {
-        return FXGL.entityBuilder(data).type(GameEntity.ZOMBIE).view("zombie_01.gif").build();
+        return FXGL.entityBuilder(data).type(GameEntity.zombie).view("zombie_01.gif").build();
     }
 
-    @Spawns("bullet")
-    public Entity bullet(SpawnData data) {
+    @Spawns("pea")
+    public Entity pea(SpawnData data) {
         return FXGL.entityBuilder(data)
-                   .type(GameEntity.PEA)
+                   .type(GameEntity.pea)
                    .viewWithBBox("pea_01.png")
                    .with(new ProjectileComponent(data.get("direction"), 420))
                    .build();
