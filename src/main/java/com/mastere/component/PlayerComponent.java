@@ -76,8 +76,10 @@ public class PlayerComponent extends Component {
         if (!shootTimer.elapsed(Duration.seconds(0.5))) {
             return;
         }
-        Point2D point2D = getEntity().getCenter().add(-11, -30);
-        SpawnData spawnData = new SpawnData(point2D).put("direction", moveDir.getVector()).put("owner", entity);
+        Point2D vector = moveDir.getVector();
+        Point2D shootLine = getEntity().getCenter().add(0, -30);
+        Point2D point2D = shootLine.add(vector.getX() > 0 ? -11 : -49, 0);
+        SpawnData spawnData = new SpawnData(point2D).put("direction", vector).put("owner", entity);
         spawn("bullet", spawnData);
         shootTimer.capture();
     }
