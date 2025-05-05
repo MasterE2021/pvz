@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.mastere.action.PlayerAction;
+import com.mastere.enums.Action;
 import com.mastere.factory.GameEntityFactory;
 import javafx.scene.input.KeyCode;
 
@@ -31,11 +32,11 @@ public class GameStarter extends GameApplication {
 
     @Override
     protected void initInput() {
-        FXGL.getInput().addAction(new PlayerAction("up"), KeyCode.W);
-        FXGL.getInput().addAction(new PlayerAction("down"), KeyCode.S);
-        FXGL.getInput().addAction(new PlayerAction("left"), KeyCode.A);
-        FXGL.getInput().addAction(new PlayerAction("right"), KeyCode.D);
-        FXGL.getInput().addAction(new PlayerAction("shoot"), KeyCode.SPACE);
+        FXGL.getInput().addAction(new PlayerAction(Action.up), KeyCode.W);
+        FXGL.getInput().addAction(new PlayerAction(Action.down), KeyCode.S);
+        FXGL.getInput().addAction(new PlayerAction(Action.left), KeyCode.A);
+        FXGL.getInput().addAction(new PlayerAction(Action.right), KeyCode.D);
+        FXGL.getInput().addAction(new PlayerAction(Action.shoot), KeyCode.SPACE);
     }
 
     @Override

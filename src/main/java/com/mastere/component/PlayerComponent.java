@@ -23,7 +23,7 @@ public class PlayerComponent extends Component {
 
     private double speed = 0;
 
-    private Vec2 velocity = new Vec2();
+    private final Vec2 velocity = new Vec2();
 
     private final LocalTimer shootTimer = FXGL.newLocalTimer();
 

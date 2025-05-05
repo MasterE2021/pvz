@@ -4,6 +4,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.UserAction;
 import com.mastere.component.PlayerComponent;
+import com.mastere.enums.Action;
 import com.mastere.enums.GameEntity;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
  */
 public class PlayerAction extends UserAction {
 
-    public PlayerAction(String actionStr) {
-        super(actionStr);
+    public PlayerAction(Action action) {
+        super(action.name());
     }
 
     @Override
